@@ -59,7 +59,6 @@ metadata:
   namespace: {{.namespace}}
 spec:
   type: LoadBalancer
-  # gcloud compute addresses create productioningress --global
   ports:
     - port: 80
       name: http
