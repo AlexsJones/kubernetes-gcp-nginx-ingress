@@ -8,7 +8,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - mq.canary.beamery.com
+    - example.com
     secretName: {{.tls-secret-name}}
   rules:
   - host: example.com
