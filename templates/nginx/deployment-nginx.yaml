@@ -59,6 +59,7 @@ metadata:
   namespace: {{.namespace}}
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: "Local"
   ports:
     - port: 80
       name: http
