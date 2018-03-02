@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datadogconf
+  namespace: {{.namespace}}
+data:
+  nginx.yaml: |-
+    init_config:
+
+    instances:
+        -   nginx_status_url: http://localhost/nginx_status
+            tags:
+                -   instance:{{.datadoginstancename}}

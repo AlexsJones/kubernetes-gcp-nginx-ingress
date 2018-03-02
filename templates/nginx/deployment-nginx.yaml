@@ -18,6 +18,15 @@ spec:
     spec:
       terminationGracePeriodSeconds: 60
       containers:
+      - image: datadog/docker-dd-agent:latest
+        name: datadog
+        env:
+        - name: API_KEY
+          value: {{.datadogapikey}}
+        volumeMounts:
+          - name: datadogconf
+            mountPath: /conf.d/nginx.yaml
+            subPath: nginx.yaml
       - image: {{.ingressimage}}
         name: nginx-ingress-controller
         volumeMounts:
@@ -59,6 +68,9 @@ spec:
       - name: otherconf
         configMap:
           name: otherconf
+      - name: datadogconf
+        configMap:
+          name: datadogconf
 ---
 apiVersion: v1
 kind: Service
