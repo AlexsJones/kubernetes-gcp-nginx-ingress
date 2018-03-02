@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - example.com
-    secretName: {{.tls-secret-name}}
+    secretName: {{.tlssecretname}}
   rules:
   - host: example.com
     http:

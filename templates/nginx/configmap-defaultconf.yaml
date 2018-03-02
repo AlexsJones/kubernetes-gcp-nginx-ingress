@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otherconf
+  namespace: {{.namespace}}
+data:
+  other.conf: |-
+      server {
+          server_name _;
+
+          location /nginx_status {
+            stub_status on;
+            access_log  on;
+            allow all;
+          }
+      }

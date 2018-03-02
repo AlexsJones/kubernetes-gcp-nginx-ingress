@@ -1,5 +1,5 @@
 preamble: This is auto generated code
 backendimage: gcr.io/google_containers/defaultbackend:1.0
-tls-secret-name: tls-secret
-namespace: default
+tlssecretname: tls-secret
+namespace: temp
 ingressimage: gcr.io/google_containers/nginx-ingress-controller:0.9.0-beta.12
