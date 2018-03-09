@@ -18,6 +18,8 @@ spec:
     spec:
       terminationGracePeriodSeconds: 60
       containers:
+# Only create the datadog instance if we have a key defined          
+{{ if .datadogapikey }}
       - image: datadog/docker-dd-agent:latest
         name: datadog
         env:
@@ -27,6 +29,7 @@ spec:
           - name: datadogconf
             mountPath: /conf.d/nginx.yaml
             subPath: nginx.yaml
+{{ end }}
       - image: {{.ingressimage}}
         name: nginx-ingress-controller
         volumeMounts:
