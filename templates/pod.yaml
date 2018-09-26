@@ -1,0 +1,41 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  namespace: {{.namespace}}
+spec:
+  revisionHistoryLimit: 5
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: api-core
+        image: tibbar/hello-go
+        ports:
+        - containerPort: 9089
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  namespace: {{.namespace}}
+spec:
+  type: NodePort
+  selector:
+    app: web
+  ports:
+  - protocol: TCP
+    port: 9090
+    targetPort: 9090
+    name: web-port
