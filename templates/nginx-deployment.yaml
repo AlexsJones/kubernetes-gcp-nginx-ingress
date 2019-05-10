@@ -15,7 +15,7 @@ spec:
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
     spec:
-      serviceAccountName: nginx-ingress-controller
+      serviceAccountName: nginx-ingress-serviceaccount
       terminationGracePeriodSeconds: 60
       containers:
       - image: {{.ingressimage}}
